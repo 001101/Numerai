@@ -93,3 +93,7 @@ ENV/
 
 # this week's data 
 data/current
+
+# output directory
+output
+
