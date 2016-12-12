@@ -6,11 +6,15 @@ from sklearn.linear_model import LogisticRegression
 
 data = pd.read_csv('./data/current/numerai_training_data.csv')
 
-train, test = cross_validation.train_test_split(data, test_size = 0.7, random_state=0)
+train, test = cross_validation.train_test_split(data,
+                                                test_size=0.7,
+                                                random_state=0)
 
-features = ["feature1","feature2","feature3","feature4","feature5","feature6","feature7","feature8",
-            "feature9","feature10","feature11","feature12","feature13","feature14","feature15",
-            "feature16","feature17","feature18","feature19","feature20","feature21"]
+features = ["feature1", "feature2", "feature3", "feature4", "feature5",
+            "feature6", "feature7", "feature8", "feature9", "feature10",
+            "feature11", "feature12", "feature13", "feature14", "feature15",
+            "feature16", "feature17", "feature18", "feature19", "feature20",
+            "feature21"]
 
 
 penalties = [1, 0.75, 0.5, 0.25, 0.1, 0.05, 0.01, 0.001, 0.0001]
@@ -41,4 +45,6 @@ tournament_predictions = model.predict_proba(tournament_data[features])
 result = tournament_data
 result['probability'] = tournament_predictions[:,1]
 
-result.to_csv("./output/out-lr.csv", columns= ('t_id', 'probability'), index=None)
+result.to_csv("./output/out-lr.csv",
+              columns=('t_id', 'probability'),
+              index=None)
